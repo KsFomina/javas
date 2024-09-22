@@ -12,7 +12,7 @@ public class Employee {
     @Override
     public String toString() {
         return "" +
-                "name:" + name + " age=" + age +" experience=" + experience +"\n";
+                "name:" + name + " age=" + age +" experience=" + experience;
     }
     @Override
     public boolean equals(Object obj) {

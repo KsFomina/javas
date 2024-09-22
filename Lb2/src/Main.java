@@ -7,6 +7,25 @@ import java.util.HashSet;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+
+    // Функция для вывода содержимого ArrayList
+    public static void printArrayList(ArrayList<Employee> list) {
+        for (Employee item : list) {
+            System.out.println(item);
+        }
+    }
+    // Функция для вывода содержимого HashSet
+    public static void printHashSet(HashSet<Employee> set) {
+        for (Employee item : set) {
+            System.out.println(item);
+        }
+    }
+    // Функция для вывода содержимого TreeSet
+    public static void printTreeSet(TreeSet<Employee> set) {
+        for (Employee item : set) {
+            System.out.println(item);
+        }
+    }
     public static void part1(){
         //создание контейнеров типа Long
         ArrayList<Long> a = new ArrayList<>();
@@ -83,22 +102,22 @@ public class Main {
         a.add(new Employee("Николай",33,10));
 
         //вывод содержимого контейнера
-        System.out.println(a);
+        printArrayList(a);
         System.out.println("---------------");
 
         a.remove(0);
-        System.out.println(a);
+        printArrayList(a);
         System.out.println("---------------");
 
         a.remove(new Employee("Вася",23,3));
-        System.out.println(a);
+        printArrayList(a);
         System.out.println("---------------");
 
         for (int i = 0; i < 2; i++) {
             a.set(i,new Employee("Олег",20+i,i*3));
         }
 
-        System.out.println(a);
+        printArrayList(a);
         System.out.println("---------------");
 
         b.add(new Employee("Аня",42,15));
@@ -128,22 +147,26 @@ public class Main {
                 }
             }
         }
-        System.out.println(b);
+        printArrayList(b);
         System.out.println("---------------");
         a.addAll(b);
-        System.out.println(a);
+        printArrayList(a);
 
     }
     public static void part3(){
         ArrayList<Employee> a = new ArrayList<>();
         a.add(new Employee("Вася",23,3));
         a.add(new Employee("Катя",20,0));
+        a.add(new Employee("Катя",20,0));
+        a.add(new Employee("Катя",20,0));
         a.add(new Employee("Сеня",20,1));
         a.add(new Employee("Кириллся",40,21));
         a.add(new Employee("Николай",33,12));
         Comparator<Employee> comparator = Comparator.comparing(Employee::getAge);
         a.sort(comparator);
-        System.out.println(a);
+        System.out.println("Рабочие по возрасту:");
+        printArrayList(a);
+        System.out.println("---------------");
 
         //создание второго контейнера типа TreeSet
         Comparator<Employee> employeeComparator = Comparator
@@ -157,27 +180,35 @@ public class Main {
                 employeeSet.add(employee);
             }
         }
-        System.out.println(employeeSet);
+        System.out.println("Рабочие со стажем более 10 лет в TreeSet:");
+        printTreeSet(employeeSet);
+        System.out.println("---------------");
 
         Comparator<Employee> employeeComparator1 = Comparator
                 .comparing(Employee::getExperience);
 
         TreeSet<Employee> employeeSet1 = new TreeSet<>(employeeComparator1.reversed());
         employeeSet1.addAll(employeeSet);
-        System.out.println(employeeSet1);
+        System.out.println("Отсортированные по убыванию стажа TreeSet:");
+        printTreeSet(employeeSet1);
+        System.out.println("---------------");
 
         Comparator<Employee> comparator1 = Comparator.comparing(Employee::getExperience);
         a.sort(comparator1.reversed());
-        System.out.println(a);
+        System.out.println("Отсортированные по убыванию стажа ArrayList:");
+        printArrayList(a);
+        System.out.println("---------------");
 
         HashSet<Employee> mergedSet = new HashSet<>(employeeSet1);
         mergedSet.addAll(a);
-        System.out.println(mergedSet);
+        System.out.println("Объединенные контейнеры в HashSet:");
+        printHashSet(mergedSet);
+        System.out.println("---------------");
     }
     public static void main(String[] args) {
 //        part1();
-//        part2();
-        part3();
+        part2();
+//        part3();
 
     }
 }

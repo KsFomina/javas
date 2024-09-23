@@ -101,13 +101,14 @@ public class Main {
         a.add(new Employee("Кириллся",40,21));
         a.add(new Employee("Николай",33,10));
 
+        System.out.println("вывод содержимого контейнера");
         //вывод содержимого контейнера
         printArrayList(a);
         System.out.println("---------------");
 
         a.remove(0);
-        printArrayList(a);
-        System.out.println("---------------");
+//        printArrayList(a);
+//        System.out.println("---------------");
 
         a.remove(new Employee("Вася",23,3));
         printArrayList(a);
@@ -116,7 +117,7 @@ public class Main {
         for (int i = 0; i < 2; i++) {
             a.set(i,new Employee("Олег",20+i,i*3));
         }
-
+        System.out.println("удалены некоторые элементы + замена");
         printArrayList(a);
         System.out.println("---------------");
 
@@ -125,6 +126,7 @@ public class Main {
         b.add(new Employee("Ваня",34,8));
         b.add(new Employee("Дмитрий",30,1));
 
+        System.out.println("доступ через итераторы");
         Iterator <Employee> iter = a.iterator();
         while (iter.hasNext()){
             System.out.println(iter.next());
@@ -138,7 +140,6 @@ public class Main {
 
         if (index != -1) { // Проверяем, найден ли элемент
             // Удаляем n элементов начиная с index + 1
-            System.out.println(1);
             for (int i = 0; i < n; i++) {
                 if (index < a.size()) {
                     a.remove(index); // Удаляем следующий элемент
@@ -147,17 +148,19 @@ public class Main {
                 }
             }
         }
+        System.out.println("Содержимое второго контейнера");
         printArrayList(b);
         System.out.println("---------------");
         a.addAll(b);
+        System.out.println("Объединение двух контейнеров");
         printArrayList(a);
 
     }
     public static void part3(){
         ArrayList<Employee> a = new ArrayList<>();
         a.add(new Employee("Вася",23,3));
-        a.add(new Employee("Катя",20,0));
-        a.add(new Employee("Катя",20,0));
+        a.add(new Employee("Катя",20,12));
+        a.add(new Employee("Катя",20,11));
         a.add(new Employee("Катя",20,0));
         a.add(new Employee("Сеня",20,1));
         a.add(new Employee("Кириллся",40,21));
@@ -207,7 +210,7 @@ public class Main {
     }
     public static void main(String[] args) {
 //        part1();
-        part2();
+        part3();
 //        part3();
 
     }

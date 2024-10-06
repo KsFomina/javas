@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Country {
     private String name;
     private int goldMedals;
@@ -28,5 +30,11 @@ public class Country {
 
     public int getBronzeMedals() {
         return bronzeMedals;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Country country)) return false;
+        return Objects.equals(name, country.name);
     }
 }

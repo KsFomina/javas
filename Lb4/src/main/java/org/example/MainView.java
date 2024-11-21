@@ -126,12 +126,12 @@ public class MainView extends VerticalLayout {
         Button button = new Button("Больше золотых медалей у ", event -> {
             Country C1=new Country(country1.getValue(),0,0,0);
             Country C2=new Country(country2.getValue(),0,0,0);
-            int gold1=countries.get(countries.indexOf(C1)).getGoldMedals();
-            int gold2=countries.get(countries.indexOf(C2)).getGoldMedals();
-            if (gold1>gold2){
-                text3.setText("Наибольшее количество золотых медалей получила: "+ country1.getValue());}
-            else if (gold1<gold2) {
-                text3.setText("Наибольшее количество золотых медалей получила: "+ country2.getValue());
+            int total1=countries.get(countries.indexOf(C1)).totalMedals();
+            int total2=countries.get(countries.indexOf(C2)).totalMedals();
+            if (total1>total2){
+                text3.setText("Наибольшее количество медалей получила: "+ country1.getValue()+". Она получила на "+ String.valueOf(total1-total2)+" медалей чем "+country2.getValue()+".");}
+            else if (total1<total2) {
+                text3.setText("Наибольшее количество медалей получила: "+ country2.getValue()+". Она получила на "+ String.valueOf(total2-total1)+" медалей чем "+country1.getValue()+".");
             }
             else {
                 text3.setText("Обе страны получили равное число медалей");

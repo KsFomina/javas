@@ -31,6 +31,10 @@ public class Country {
     public int getBronzeMedals() {
         return bronzeMedals;
     }
+
+    public int totalMedals(){
+        return goldMedals+silverMedals+bronzeMedals;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -119,19 +119,6 @@ public class MainView extends VerticalLayout {
         dialog.open();
 
     }
-
-    private int[] parseRange(String rangeStr) throws Exception {
-        String[] parts = rangeStr.split("\\.\\.");
-        if (parts.length != 2) {
-            throw new Exception("Неверный формат диапазона. Используйте '..' для разделения границ.");
-        }
-        int min = Integer.parseInt(parts[0].trim());
-        int max = Integer.parseInt(parts[1].trim());
-        if (min > max) {
-            throw new Exception("Минимальное значение должно быть меньше максимального.");
-        }
-        return new int[]{min, max};
-    }
     private List<Integer> generateRandomNumbers(int min, int max, int num) {
         Random random =new Random();
         List<Integer> numbers = new ArrayList<>();
@@ -167,7 +154,7 @@ public class MainView extends VerticalLayout {
             removeNonCoprimeNumbers();
             // Выводим содержимое ts в text2
             for (Integer i : ts) {
-                text2.setValue(text2.getValue() + "\n" + i);
+                text2.setValue(text2.getValue() + i+"\n");
             }
 //            for (Integer i : divisorsCount.values()) {
 //                text3.setValue(text3.getValue() + "\n" + i);
